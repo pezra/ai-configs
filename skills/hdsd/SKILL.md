@@ -1,6 +1,6 @@
 ---
-name: software-dev
-description: Design-first workflow for building a feature or fixing a non-trivial bug. It elicits requirements, adversarially probes the edge of the change, writes a design doc and an implementation plan under .plan/<slug>/, has independent subagents critique the plan, implements it step by step with subagents, then runs /simplify and /code-review, drafts a PR description, runs a retro on the process, and ends by recording the key decisions in decisions.md, opening the PR, and removing the workspace clone and its plan files. Takes an optional issue link or feature/bug description. Use it when the user invokes /software-dev, asks to "design", "plan", "spec out" or "properly build" a feature, wants a design doc or implementation plan before coding, or describes a substantial feature or tricky bug and wants it done carefully. Don't use it for one-line fixes, quick questions, or edits where the user clearly just wants the change made.
+name: hdsd
+description: Human-driven, design-first workflow for building a feature or fixing a non-trivial bug. It elicits requirements, adversarially probes the edge of the change, writes a design doc and an implementation plan under .plan/<slug>/, has independent subagents critique the plan, implements it step by step with subagents, then runs /simplify and /code-review, drafts a PR description, runs a retro on the process, and ends by recording the key decisions in decisions.md, opening the PR, and removing the workspace clone and its plan files. Takes an optional issue link or feature/bug description. Use it when the user invokes /software-dev, asks to "design", "plan", "spec out" or "properly build" a feature, wants a design doc or implementation plan before coding, or describes a substantial feature or tricky bug and wants it done carefully. Don't use it for one-line fixes, quick questions, or edits where the user clearly just wants the change made.
 argument-hint: "[issue link | feature or bug description]"
 ---
 
@@ -154,12 +154,10 @@ Choose a model for each step from its complexity and risk. Choose for the step, 
 | Step character | Model | Effort |
 |---|---|---|
 | Mechanical: renames, boilerplate, config, simple tests following an existing pattern | `haiku` | `low` |
-| **Default.** Ordinary feature work and bug fixes with clear specs | `sonnet` (with an Opus advisor; see below) | `medium` |
+| **Default.** Ordinary feature work and bug fixes with clear specs | `sonnet` ) | `medium` |
 | Subtle logic: concurrency, security-sensitive code, data migrations, tricky algorithms, cross-cutting refactors, anything where a quiet bug is expensive | `opus` | `high` |
 
 Pass the choices as the Agent tool's `model` and `effort` parameters, on every subagent (reviewers too: read-only scans can usually run at `low` or `medium`).
-
-**About the Opus advisor:** The Agent tool has no per-call advisor setting. Subagents inherit the *session's* advisor (set with `/advisor`, the `advisorModel` setting, or `--advisor`), subject to a model-pairing check against their own model. Whether your own session has an `advisor` tool doesn't tell you whether a sonnet subagent will get one, so check at runtime. Ask the first `sonnet` implementation subagent to state at the top of its report whether it has an `advisor` tool. If it doesn't, stop and tell the user: "sonnet + Opus advisor" needs `/advisor` set to Opus. Then either wait for them to set it, or, with their agreement, move the medium-risk steps up to `opus`. Tell sonnet subagents that do have the advisor to call it before starting a step and again before reporting the step done.
 
 ## Phase 9: Final polish and review
 
