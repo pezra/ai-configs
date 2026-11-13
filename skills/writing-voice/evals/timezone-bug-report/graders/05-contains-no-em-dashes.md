@@ -1,7 +1,7 @@
 ---
 type: llm
-focus: trace
+focus: {source: file, path: bug.md}
 weight: 1
 ---
 
-Contains no em dashes (—)
+bug.md contains no em dashes (—)

@@ -1,7 +1,7 @@
 ---
 type: llm
-focus: trace
+focus: {source: file, path: message.md}
 weight: 1
 ---
 
-Contains no emoji
+message.md contains no emoji

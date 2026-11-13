@@ -1,6 +1,6 @@
 ---
 type: llm
-focus: trace
+focus: {source: file, path: post.md}
 weight: 1
 ---
 

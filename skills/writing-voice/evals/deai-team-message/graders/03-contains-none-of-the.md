@@ -1,7 +1,7 @@
 ---
 type: llm
-focus: trace
+focus: {source: file, path: message.md}
 weight: 1
 ---
 
-Contains none of the AI-habit words (moreover, furthermore, delve, leverage, robust, landscape, navigate, crucial, game-changer, at its core)
+message.md contains none of the AI-habit words (moreover, furthermore, delve, leverage, robust, landscape, navigate, crucial, game-changer, at its core)

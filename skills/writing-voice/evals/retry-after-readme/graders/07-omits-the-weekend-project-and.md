@@ -1,6 +1,6 @@
 ---
 type: llm
-focus: trace
+focus: {source: file, path: README.md}
 weight: 1
 ---
 

@@ -1,6 +1,6 @@
 ---
 type: llm
-focus: trace
+focus: {source: file, path: bug.md}
 weight: 1
 ---
 

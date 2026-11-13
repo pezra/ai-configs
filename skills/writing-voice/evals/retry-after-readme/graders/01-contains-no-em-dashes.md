@@ -1,7 +1,7 @@
 ---
 type: llm
-focus: trace
+focus: {source: file, path: README.md}
 weight: 1
 ---
 
-Contains no em dashes
+README.md contains no em dashes

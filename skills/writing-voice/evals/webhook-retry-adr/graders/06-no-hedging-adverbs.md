@@ -1,7 +1,7 @@
 ---
 type: llm
-focus: trace
+focus: {source: file, path: adr.md}
 weight: 1
 ---
 
-Contains none of the hedging adverbs arguably, somewhat, potentially, or generally used as a softener
+adr.md contains none of the hedging adverbs arguably, somewhat, potentially, or generally used as a softener
