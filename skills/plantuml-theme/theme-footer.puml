@@ -1,0 +1,11 @@
+skinparam wrapWidth 1000
+skinparam responseMessageBelowArrow true
+skinparam roundcorner 10
+<style>
+sequenceDiagram {
+  participant {
+    Margin: 10;
+  }
+}
+</style>
+@enduml

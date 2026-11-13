@@ -1,0 +1,6 @@
+@startuml
+!pragma teoz true
+!pragma sequenceMessageSpan true
+autonumber 1 "<color:darkgray>(#) "
+skinparam defaultFontName "Chalkboard SE", "Comic Sans MS", "Comic Neue", Helvetica
+skinparam defaultFontSize 13
