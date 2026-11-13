@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: csv-newline-commit
+expected_outcome: |
+  A lowercase imperative subject with no period, plus a body explaining the user-visible symptom and why, without narrating the diff.

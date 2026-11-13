@@ -1,147 +1,70 @@
 ---
 name: writing-voice
-description: "Peter's prose voice and style rules. Use before drafting or editing ANY prose written on Peter's behalf: Confluence pages, README/docs, ADRs, Jira tickets, bug reports, PR bodies, commit messages, Slack or email drafts. Also use when asked to review, tighten, de-hedge, or \"make this sound like me.\""
+description: Write or rewrite text in Peter Williams's (pezra's) voice. Use this whenever Peter asks for something that will go out under Peter's name, such as a blog post, essay, technical argument, design doc, ADR, RFC, API reference, incident report, team standard, Jira ticket, bug report, Confluence page, resume, cover letter, README, repo description, PR description, commit message, team message, Slack or email draft, or social post, or says "in my voice", "sound like me", "write this like i would", or "make this less AI". Also use it for editing, tightening, de-hedging or de-AI-ing Peter's drafts, even if voice isn't mentioned. Don't use it for Claude's own replies or for code.
 ---
 
-# Peter's voice and style
+# Peter's writing voice
 
-Read this file and the genre file for the artifact before drafting. Then draft, then run §12 against what you wrote before returning it.
+Derived from barelyenough.org (2005–2022, settled from 2009 on), about 40 of Peter's Confluence pages (2023–2026), Peter's resume, Peter's public READMEs and commit history, and Peter's own edits of drafts made with this skill.
 
-This is a workplace-writing voice first. Nearly everything you'll be asked to draft follows §§1–12 plus a genre file. The narrative register (blog post, personal essay) lives in `references/narrative.md`. It borrows the same instincts (deflation, flat assertion, concessions stated plainly) but diverges on register, mechanics, and structure. Nothing in it overrides §§1–12 for work artifacts.
+In one line: an experienced engineer thinking out loud, plainly, who says what they actually think, shows why, and admits where it might not hold.
 
-One scoping rule: numbers and rates in these files are targets to hit, not trivia. If a draft misses them, revise it rather than noting the miss.
+## Read the guide for what you're writing
 
-## Genre files
+This file has the rules every piece shares. The rest lives in reference files, and the voice doesn't come through without them, so read the ones listed before drafting.
 
-Section numbers are stable across all files in this skill. Load the file for the artifact you are drafting, in addition to this one. Load only that file.
-
-| Artifact | Load |
+| Writing | Read first |
 |---|---|
-| ADR, decision record, design doc, RFC | `references/decisions-and-design.md` |
-| API or service reference, glossary entry, field spec | `references/api-reference.md` |
-| Incident report, postmortem | `references/incident-reports.md` |
-| Team standard, rubric | `references/standards.md` |
-| Jira story or ticket, bug report | `references/tickets-and-bugs.md` |
-| PR body, commit message | `references/pr-and-commit.md` |
-| Slack, email, meeting or scratch notes | `references/messages-and-notes.md` |
-| Blog post, personal essay | `references/narrative.md` |
+| Commit message, PR description, repo description | Nothing more; see below |
+| README | `references/readme.md` and `references/exemplars-repo.md` |
+| Blog post, essay, technical argument | `references/prose.md` and `references/exemplars-prose.md` |
+| Team message, email, Slack, short or social post, de-AI edit of Peter's draft | `references/prose.md` (the exemplars' "Short posts" section helps for very short pieces) |
+| Design doc, ADR, RFC, API reference, incident report, team standard, ticket, bug report, Confluence page, working notes | `references/work-docs.md` |
+| Resume, cover letter | `references/resume.md` |
 
-An artifact that spans two (a design doc with an API section) loads both. Review, tighten, or de-hedge requests load the file for the artifact under review.
+A README written in the blog voice came back as "too wordy and personal", so don't borrow from `prose.md` for repo writing. Work documents are impersonal in the same way, so don't borrow the blog's first-person opinion or characteristic moves for them either. A design note meant to persuade peers, rather than specify a system, is a technical argument.
 
-Work artifacts use this file plus one genre file. `references/narrative.md` overrides this file's register rules for blog and essay writing only.
+## Don't invent anything
 
-## 1. The voice
+- **Don't invent Peter's life.** Use only experiences, opinions, people and results Peter gave you or that are in the source material. Don't elaborate on the ones you were given either: "we had a lot of flaky tests" doesn't license how they got that way or what fixing them took. Where a passage needs more, write `[Peter: did you see this in practice?]`. Under Peter's name, an invented detail is a false claim.
+- **Don't assign opinions.** If Peter's view matters and wasn't given, ask, or flag the draft as a guess.
+- **Facts and arguments are handled differently.** A new fact about what happened, what Peter did, or what Peter saw never goes in the draft, even with a note; put a `[Peter: ...]` slot there instead. A supporting argument Peter didn't give may go in, but list it on handover so Peter can check it. A wry remark that follows from what you were told needs neither.
 
-An engineer stating a decision, a spec, or a fact about a system to a peer who has to act on it. Flat declarative claims, no warm-up, no apology, no hedge disguised as politeness. Confidence comes from specificity — a number, a field name, a concrete example — not from adverbs or assurance.
+## First person
 
-The governing instinct is *deflation*: state the rule, not a case for how carefully you considered it. Useful beats impressive. Humor, when it shows up at all, is dry, brief, and subordinate — a parenthetical aside, never the reason for the paragraph.
+Lowercase **i** mid-sentence, including i'm, i'll, i've: "Personally, i find all of the existing options wanting." Capital **I** to start any sentence, line or paragraph, including right after a salutation. It's the most recognizable marker and applies everywhere except formal external documents such as resumes and cover letters.
 
-## 2. Register — impersonal by default
+## AI habits that break this voice
 
-The system or the artifact is the subject, not "I": "A namespace is a container for related data," not "I think of a namespace as..." "This event indicates that the enclosed service agreement, account and service point exist," not "We're sending this event because...". This holds across specs, glossaries, decision records, and rubrics — first person essentially does not appear in them.
+Most have zero or near-zero occurrences in Peter's writing:
 
-- First person shows up in exactly two places: a self-deprecating aside ("Datafeed type `ACCOUNTDELTA` — I know, I know, this isn't account data or deltas. It's terrible but unavoidable. I'm sorry.") or a genuinely hedged personal guess inside an open question ("i'm unsure how much extra load this will put on balance and account service"). Both are rare, and both read as asides, not as the main claim.
-- Second person is a deliberate audience switch, not a default: use it only when walking an external API consumer through a worked scenario ("You have a balance record in your DB. It has `syncedAt: 2025-01-20T14:30:00Z`... Check `syncedAt`."). Internal specs and decision records never address "you."
-- Obligations on other systems or people are third-person normative ("Consumers of this API **must** ignore unrecognized fields"), not imperative ("you must ignore..."). Direct "you" is reserved for the consumer-facing case above.
-- "We" means the team or org making the decision ("We should move to a low-trust paradigm"), never a stand-in for "I."
+- "moreover", "furthermore", "delve", "leverage" (verb), "robust", "landscape", "navigate", "crucial", "game-changer", "at its core"
+- Hedging adverbs: "arguably", "somewhat", "potentially", "in some sense"
+- "It's not X, it's Y" / "This isn't about X. It's about Y."
+- Reflexive triads and stacked parallel sentences
+- Punchy one-line paragraphs and staccato fragments for drama
+- Em dashes as a connector (dashes are rare in Peter's writing, and they're spaced en dashes ( – ) when they appear)
+- Bullets standing in for an argument, bolded lead-ins on every point, emoji, callout boxes, "TL;DR", headings phrased as clever promises
+- Opening on a broad truth about "today's world" or with "this document describes"; closing with a summary or a call to reflection
+- Over-even balance. Peter picks a side
 
-## 3. Sentences
+## Commit messages
 
-Median runs 15–20 words in expository prose, dropping to 5–10 words in bullets, pros/cons lines, and glossary fragments. Range is wide — a five-word sentence sits next to a 30-word one carrying a parenthetical or a compound condition.
+Short subject, no period, lowercase imperative, code in backticks: "support relative links", "fix `mix release`". The subject names the feature or the bug fixed, not the code change ("fix csv export dropping rows with newlines", not "parse csv export with `NimbleCSV`"). An occasional joke is fine: "reformat everything ¯\_(ツ)_/¯".
 
-- A longer setup sentence followed by a short, flat one is a real and frequent pattern, often with the short sentence delivering a hard number or the verdict: "The team responded rapidly to resolve the issue as soon as it came to light. It took less than 2 hours from the first report until a fix was deployed and verified in production." Do this more than once per document.
-- Fragments function as verdicts in lists — pros/cons lines, root causes, assessments — not in running prose: "inappropriate data items were added to API response representations." No subject, no article, and that's the point.
-- Put the claim at the front of the sentence, same as the paragraph. Never build up to it.
-- Emphasis comes from placement, brevity, and bolded keywords (§7) — never from stacked adjectives.
+Then a body of two or three sentences saying why: the feature added, or the bug's symptom as a user would see it, and the cause in a clause. Don't narrate the diff or mention the tests. Peter wants this body even though older commits lack it; trivial changes ("bump version") can skip it. Follow a repo's existing style if different, and keep any session-required attribution lines.
 
-## 4. Paragraphs
+## PR descriptions
 
-Short: 1–3 sentences is typical, and a single-sentence paragraph is the default shape for a decision, a definition, or a load-bearing constraint — not an exception.
+Same as a commit body, a little longer: why, in one to three sentences, then any caveat the reviewer needs on its own line. No summary of the diff and no list of files touched. Use the repo's PR template if it has one.
 
-- Open with the claim. No transition sentence, no "to understand this, first consider..."
-- A single elliptical sentence with the subject dropped can be the entire opening: "Tracks and provides access to the progress and status of asynchronous jobs." — the subject (the service) is implied, not stated.
-- A concession that belongs to the paragraph's claim gets its own sentence immediately after, not folded in with "but" or "although": "This field is an implementation detail, not part of the domain or message model, and wasn't intended to be exposed in the API." Even there, note the concession rides in the same sentence via "and" — that's the ceiling, not a three-clause pileup.
-- Past about five sentences, it wants a header.
+## Repo descriptions
 
-## 5. Structure and argument
+Under ten words, imperative or fragment, no final period: "Use HAL APIs easily", "Three value logic for Elixir", "simple file based queue in Ruby". The one place a joke can carry the line: "scaffolding for chronic meeting missers".
 
-- Open cold on the problem, the decision, or the definition. No background section before the reader knows what's being decided or defined.
-- For any decision with real alternatives, use the fixed shape (§9, Decision records) instead of inventing a new skeleton per document. State the decision before defending it.
-- Ground every rule in one concrete example from an actual system — a real field name, a real client, a real incident — never a generic placeholder ("Foo," "widget").
-- State the alternative or the counterargument accurately and briefly, then answer it. The Pros/Cons list is this instinct formalized: what's genuinely good about the option you're rejecting, then what it costs.
-- One idea per section. Headers do real work: lowercase noun phrases for reference material ("naming," "functional mindset"), full lowercase imperative sentences when the header states the rule itself ("properties are required or nullable"), Title Case reserved for the fixed decision-record labels (Issue, Decision, Background, Options, Metadata).
-- Output heuristics and name them as such when that's what they are — a rule of thumb, not a law.
-- Trade-offs are the default frame. Every option gets a cost, not just a benefit.
+## Check before delivering
 
-## 6. Hedging and certainty
-
-Firmness is marked lexically and structurally, not with adverbs.
-
-- Bolded RFC-2119 keywords (**MUST**, **MUST NOT**, **SHOULD**, **MAY**) mark a hard requirement. Cite the convention once if the document is formal enough to need it.
-- Quantifier choice does the rest of the work: "all," "any," "every" for a hard rule; "most," "usually" for a guideline with acknowledged slack. That's the hedge — not an adverb bolted onto the sentence.
-- A genuinely open question gets its own line: a bullet under "Questions," a metadata field set to "TBD" or "Status: open." It does not get a hedge word smeared into the sentence that raised it.
-- Hedging adverbs — "arguably," "somewhat," "potentially," "generally" as a softener — are at zero. A plain frequency word ("often," "usually") is fine when it's descriptive rather than a hedge: "it is often safer and clearer to store timezone information alongside these values" is a claim about the world, not doubt about the claim.
-- Genuinely unsure and nowhere structural to put it? Say so flatly in one sentence and move on. Don't spread the uncertainty across the paragraph.
-
-## 7. Lists, tables, and mechanics
-
-- Lists are fragments more often than sentences: no terminal punctuation on a single-clause item, a period only once an item runs multiple clauses. No bolded lead-in labels inside a list item.
-- API/reference field entries follow `fieldName (type, constraint) - description.` — a hyphen, not a colon.
-- Nesting is fine for genuine sub-detail (a cost breakdown under a Cons bullet); flat is the default.
-- Em dashes pair with a mid-sentence clarification — "they are not inherently dereferenceable – that is, you cannot retrieve a representation of the identified resource using just the KRN –" — and are the exception, not the reflex. Plain parentheses cover most asides.
-- Semicolons join two short parallel or contrastive clauses. Never to introduce a list.
-- Colons introduce an example, a quoted literal, or a code block, and pair with bold to label a section inline: **Requirement:**, **Decision:**.
-- Bold marks a defined term on first use and RFC-2119 keywords — not general emphasis. If a sentence needs bold to land, shorten the sentence instead.
-- Italics mark a term under active definition or a negation ("_not_ part of the domain model"), never shouting.
-- Inline code for every field, endpoint, topic, and header name. A fenced example beats a paragraph describing the same shape. A formal grammar (ABNF/EBNF) beats prose when a string format has to be pinned down exactly.
-- Don't chase typo-free polish for its own sake — small typos survive in the real corpus because getting the decision or the spec right is what matters. That's license to move fast, not license to be wrong.
-
-## 8. Openings and closings
-
-Open cold: the definition, the decision, or the broken behavior, in the first sentence. No "this document describes," no scene-setting, no background before the stakes.
-
-- Decision records state the decision early — right after the Issue — and never re-derive it at the end.
-- Incident reports open with what happened and how fast it was fixed, as two flat sentences, the second one carrying a hard number.
-- Best-practice catalogs can close on a compressed, quotable rule ("The best feature gate is the one you don't create.") — the one place an aphoristic landing is in voice for work writing.
-- Most documents don't get a wrap-up sentence at all. They stop at the last substantive item — a root-cause list, a Metadata table, a "See also" — rather than manufacturing a summary paragraph. Don't add one just to have a closing.
-
-## 9. Genre playbook
-
-One file per artifact type. See Genre files above.
-
-## 10. Rewrites
-
-Genre-specific rewrites live in the genre files. One applies everywhere.
-
-**Closing.**
-> *Before:* In summary, this migration approach has some trade-offs but should work well for most cases, and we can revisit if issues come up.
->
-> *After:* Add the column, backfill it, write to both, read from the new one, drop the old one.
-
-Summary-of-a-summary gone; the procedure itself is the closing.
-
-## 11. Not for work artifacts
-
-These belong to the blog voice (§13) and would read as an affectation in a work document. Never in a design doc, ticket, bug report, PR, or decision record:
-
-- First-person opinion voice ("I think," "in my experience") as the default mode.
-- Aphoristic one-liner closers, except the §8 carve-out for best-practice catalogs.
-- Dry humor as a structural device — parentheticals undercutting the sentence, self-deprecating asides beyond the rare case in §2.
-- Personal anecdote as the grounding for a claim. Ground claims in the system instead (§5).
-- Exclamation marks, rhetorical questions, or any fingerprint from the §13.9 blocklist in `references/narrative.md`.
-
-## 12. Checklist
-
-Run this against the draft before returning it. Fix what fails.
-
-1. Is the system or artifact the subject of the main claims, not "I" — unless this is genuinely personal/narrative writing (§13)?
-2. Opens on the decision, definition, or broken behavior — no background before the stakes?
-3. Every firm rule marked by a bold keyword or an "all/any/every," not an adverb?
-4. Every open question in its own line or field, not smeared into a sentence?
-5. At least one long-sentence-then-short-sentence moment?
-6. At least one single-sentence paragraph carrying a decision or constraint?
-7. A concrete example grounds each abstract rule — a real field, client, or incident, not a placeholder?
-8. Bold used only for keywords/labels, not general emphasis?
-9. Hedging adverbs ("arguably," "somewhat," "potentially," "generally" as softener) at zero?
-10. Matches the genre shape in the genre file for this artifact type?
-11. Any sentence or paragraph deletable without losing information? Delete it.
+1. Fix capital "I" (I'm, I'll, I've) mid-sentence. Then capitalize every "i" that starts a sentence, line or paragraph.
+2. Search for the AI-habit words and patterns, and for em dashes.
+3. Trace every first-person experience, detail and opinion to what Peter provided; flag the rest as `[Peter: ...]` and mention the flags on handover.
+4. Run the extra checks at the end of the guide you read.

@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: feature-flag-essay
+expected_outcome: |
+  A ~400 word blog post in Peter's voice that takes the stated position early, uses only the supplied experience, and ends on the practical recommendation.

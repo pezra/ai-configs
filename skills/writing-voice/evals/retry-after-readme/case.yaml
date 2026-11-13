@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: retry-after-readme
+expected_outcome: |
+  A short README that opens with what the library does, shows code early, explains failure behavior, and leaves out the weekend-project backstory.

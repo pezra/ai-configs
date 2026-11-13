@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: timezone-bug-report
+expected_outcome: |
+  A bug report that opens on the broken behavior, gives numbered repro steps then expected then actual, separates known facts from the labeled suspicion, and invents nothing.

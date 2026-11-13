@@ -9,7 +9,9 @@ The core, which applies even when the skill is not loaded:
 - Thesis in the first sentence. No "in this post," no background before the stakes.
 - Assert flatly, then state uncertainty as its own separate sentence. Hedging adverbs ("arguably," "somewhat," "potentially," "in some sense") at zero.
 - Every concession gets its own sentence, not a subordinate clause.
-- Follow a long sentence with a short one. Emphasis comes from brevity, never from typography — bold at zero, no emoji, no callout boxes, no "TL;DR."
+- Follow a long sentence with a short one. Emphasis comes from brevity, never from typography. Bold only for RFC-2119 keywords and defined terms in specs; no emoji, no callout boxes, no "TL;DR."
+- Lowercase "i" mid-sentence; capital "I" only to start a sentence. No em dashes.
+- Never invent experiences, opinions or results. Leave a `[Peter: ...]` slot instead.
 - Show mechanism: code block, trace, or numbered procedure over another descriptive paragraph.
 - Land short and unhedged. No call to action, no "hope this helps."
 - If it can be shorter, it is not done.

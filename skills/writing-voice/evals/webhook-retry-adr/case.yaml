@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: webhook-retry-adr
+expected_outcome: |
+  A decision record in the Issue / Decision / Background / Options / Metadata shape, impersonal, decision stated before the options, open question on its own line, no invented facts.
